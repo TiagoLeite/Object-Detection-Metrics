@@ -22,6 +22,7 @@ from BoundingBox import BoundingBox
 from BoundingBoxes import BoundingBoxes
 from Evaluator import *
 from utils import BBFormat
+import pandas as pd
 
 
 # Validate formats
@@ -373,7 +374,21 @@ for metricsPerClass in detections:
         f.write('\nPrecision: %s' % prec)
         f.write('\nRecall: %s' % rec)
 
+        df = pd.DataFrame(data={'precision': precision, 'recall': recall})
+        df.to_csv(savePath+'/'+cl+'_pr.csv')
+
+
 mAP = acc_AP / validClasses
 mAP_str = "{0:.2f}%".format(mAP * 100)
 print('mAP: %s' % mAP_str)
 f.write('\n\n\nmAP: %s' % mAP_str)
+
+
+
+
+
+
+
+
+
+
