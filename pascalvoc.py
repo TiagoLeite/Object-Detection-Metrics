@@ -375,7 +375,7 @@ for metricsPerClass in detections:
         f.write('\nRecall: %s' % rec)
 
         df = pd.DataFrame(data={'precision': precision, 'recall': recall})
-        df.to_csv(savePath+'/'+cl+'_pr.csv')
+        df.to_csv(savePath+'/'+cl+'_pr.csv', index=False)
 
 
 mAP = acc_AP / validClasses
